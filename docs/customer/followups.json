@@ -1,0 +1,16 @@
+{
+  "records": [
+    {
+      "id": 1,
+      "date": "2026-05-21",
+      "type": "会议",
+      "content": "生产部-生猪养殖研发项目管理沟通，演示框架需求确认",
+      "attendees": ["生产部-生猪养殖研发项目管理"],
+      "actions": [
+        { "action": "确认演示框架内容：集团级项目集管控+单项目全流程落地", "owner": "方案", "assignee": "", "deadline": "2026-05-21", "done": false, "completedAt": null },
+        { "action": "适配场景：精准饲喂、精准通风、疫苗方案、饲料实验等养殖类研发项目", "owner": "方案", "assignee": "", "deadline": "2026-05-21", "done": false, "completedAt": null },
+        { "action": "协调权限与费用模块对接", "owner": "销售", "assignee": "", "deadline": null, "done": false, "completedAt": null }
+      ]
+    }
+  ]
+}
