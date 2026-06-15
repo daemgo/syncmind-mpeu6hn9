@@ -1,93 +1,57 @@
 {
   "currentVersion": "v0.1",
   "status": "draft",
-  "versions": [
-    {
-      "version": "v0.1",
-      "createdAt": "2026-05-21T00:00:00.000Z",
-      "trigger": "cold-start",
-      "inputSummary": "基于客户档案+沟通素材推演",
-      "changeSummary": [
-        "从档案推演养殖研发项目集管理8条需求",
-        "从沟通素材提取8条明确需求",
-        "推演用户角色6类",
-        "识别行业痛点3项关联需求",
-        "生成待确认问题10条",
-        "识别风险5条/假设4条"
-      ]
-    }
-  ],
+  "versions": [],
   "current": {
     "salesInput": {
       "salesPerson": "",
-      "lastUpdated": "2026-05-21",
+      "lastUpdated": "2026-06-15",
       "overallAssessment": {
-        "customerIntent": "强烈",
-        "projectUrgency": "中等",
+        "customerIntent": "中等",
+        "projectUrgency": "中等紧迫，6-12个月窗口期",
         "budgetSituation": "未知",
         "competitionStatus": "不明确",
         "winProbability": "不明确",
-        "keyObstacles": [],
-        "confidenceLevel": "中"
+        "keyObstacles": ["预算未知，老板对成本敏感", "信息化基础薄弱，历史数据缺失"],
+        "confidenceLevel": "低"
       },
       "keyPersons": [
-        { "name": "", "title": "集团决策层/老板" },
-        { "name": "", "title": "养殖场负责人/研发负责人" },
-        { "name": "", "title": "采购/财务负责人" }
+        { "name": "老板娘", "title": "老板/老板娘 - 实际控制人，信息化投入最终拍板" },
+        { "name": "人事负责人", "title": "人事/行政 - 内部推动者" },
+        { "name": "生产厂长", "title": "生产负责人 - 影响车间工人管理决策" }
       ],
       "realNeeds": {
-        "explicitNeeds": [
-          "集团级项目集管控",
-          "单项目全流程落地"
-        ],
-        "implicitNeeds": [
-          "多养殖场/多实验点数据汇总分析",
-          "养殖实验数据标准化采集与存储",
-          "研发费用预算与成本跟踪"
-        ],
-        "suspectedNeeds": [
-          "与现有ERP/财务系统集成",
-          "移动端数据采集支持",
-          "多项目资源冲突预警"
-        ]
+        "explicitNeeds": ["考勤统计自动化", "订单进度追踪"],
+        "implicitNeeds": ["生产成本精细核算", "库存账实一致", "质量追溯满足主机厂验厂"],
+        "suspectedNeeds": ["与主机厂DMS系统对接", "设备OEE分析"]
       },
       "decisionFactors": {
-        "primaryFactor": "功能适配性",
-        "secondaryFactors": ["实施难度", "使用门槛", "数据迁移成本"],
-        "dealBreakers": []
+        "primaryFactor": "成本效益",
+        "secondaryFactors": ["易用性", "实施难度", "见效快慢"],
+        "dealBreakers": ["预算超出承受范围", "实施周期过长"]
       },
-      "notes": "客户已明确需要演示精准饲喂、精准通风、疫苗方案、饲料实验等养殖类研发项目管理功能，并强调权限与费用协同打通",
+      "notes": "数字化萌芽期，基础管理靠人工，系统建设从零起步。老板/老板娘主导决策，人事负责人推动，信息化投入意愿已有初步意向",
       "concerns": [],
-      "suggestions": [
-        "演示需覆盖功能讲解、场景适配、落地方案",
-        "重点展示多项目并行管理与数据汇总能力",
-        "准备权限矩阵演示（研发人员/实验室管理员/生产部领导差异）"
-      ]
+      "suggestions": ["以钉钉考勤为切入点，先解决考勤统计麻烦，建立信任后再扩展"]
     },
     "sources": {
       "meetings": [],
       "documents": [],
-      "communications": [
-        { "type": "演示预约沟通", "date": "2026-05-21", "summary": "客户预约演示，明确核心需求为集团级项目集管控+单项目全流程落地，适用项目类型包括精准饲喂、精准通风、疫苗方案、饲料实验" }
-      ],
+      "communications": [],
       "observations": []
     },
     "needs": [
       {
         "id": "REQ-001",
-        "category": "business",
-        "title": "集团级项目集管控",
-        "description": "在集团层面统一管理多个养殖类研发项目，实现跨项目的资源协调、进度跟踪、绩效分析和资源冲突预警，支持项目组合视图与单个项目钻取",
+        "category": "functional",
+        "title": "工序级报工与进度追踪",
+        "description": "支持扫码报工，实现订单-工序-人员的实时关联，订单进度对内可见可查，支持客户查询窗口",
         "priority": "must",
-        "confidence": "high",
-        "source": {
-          "type": "customer-stated",
-          "detail": "客户明确提出核心需求：集团级项目集管控",
-          "raw": "核心需求：集团级项目集管控 + 单项目全流程落地"
-        },
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案痛点'排产依赖人工经验，插单导致车间混乱'推断", "raw": null },
         "status": "active",
-        "module": "项目集管理",
-        "relatedPainPoints": ["生产管理-批次管理依赖人工"],
+        "module": "生产管理",
+        "relatedPainPoints": ["生产管理-排产混乱"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -95,18 +59,14 @@
       {
         "id": "REQ-002",
         "category": "business",
-        "title": "单项目全流程落地",
-        "description": "每个研发项目支持从立项、计划、执行、监控到结项的完整生命周期管理，包括阶段门控、里程碑管理、任务分解与跟踪",
+        "title": "产品成本精细化核算",
+        "description": "实现工序级成本归集，精确统计工废料废，支持订单成本利润分析，替代现有粗放估算模式",
         "priority": "must",
-        "confidence": "high",
-        "source": {
-          "type": "customer-stated",
-          "detail": "客户明确提出核心需求：单项目全流程落地",
-          "raw": "核心需求：集团级项目集管控 + 单项目全流程落地"
-        },
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案痛点'产品成本靠粗放估算，无法精确核算工废料废'推断", "raw": null },
         "status": "active",
-        "module": "项目管理",
-        "relatedPainPoints": [],
+        "module": "成本核算",
+        "relatedPainPoints": ["成本核算-粗放估算"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -114,18 +74,14 @@
       {
         "id": "REQ-003",
         "category": "functional",
-        "title": "精准饲喂研发项目管理",
-        "description": "支持精准饲喂实验项目的完整管理，包括实验方案设计、饲喂参数配置、实验数据自动采集、效果评估报告生成",
+        "title": "全链路质量追溯",
+        "description": "建立来料-工序-出货全链路条码追溯体系，满足主机厂验厂要求，支持质量异常快速定位",
         "priority": "should",
-        "confidence": "high",
-        "source": {
-          "type": "customer-stated",
-          "detail": "客户明确提到的适用项目类型",
-          "raw": "适用项目：精准饲喂、精准通风、疫苗方案、饲料实验等养殖类研发项目"
-        },
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案痛点'质检靠人工，追溯困难'和机会'满足主机厂验厂要求'推断", "raw": null },
         "status": "active",
-        "module": "精准饲喂实验管理",
-        "relatedPainPoints": [],
+        "module": "质量管理",
+        "relatedPainPoints": ["质量管理-追溯困难"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -133,18 +89,14 @@
       {
         "id": "REQ-004",
         "category": "functional",
-        "title": "精准通风研发项目管理",
-        "description": "支持精准通风实验项目管理，包括通风参数配置、环境数据实时采集、告警规则设置、数据对比分析",
+        "title": "库存账实一体化",
+        "description": "通过扫码入库、出库，实现原材料、成品、在制品的实时账务处理，库存预警与呆滞料识别",
         "priority": "should",
-        "confidence": "high",
-        "source": {
-          "type": "customer-stated",
-          "detail": "客户明确提到的适用项目类型",
-          "raw": "适用项目：精准饲喂、精准通风、疫苗方案、饲料实验等养殖类研发项目"
-        },
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案痛点'原材料/成品账实不符，呆滞料占用资金'推断", "raw": null },
         "status": "active",
-        "module": "精准通风实验管理",
-        "relatedPainPoints": [],
+        "module": "库存管理",
+        "relatedPainPoints": ["库存管理-账实不符"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -152,18 +104,14 @@
       {
         "id": "REQ-005",
         "category": "functional",
-        "title": "疫苗方案研发项目管理",
-        "description": "支持疫苗实验/免疫方案优化项目管理，包括免疫程序设计、疫苗批次管理、接种记录追踪、抗体检测数据关联、免疫效果评估",
+        "title": "考勤与工时管理",
+        "description": "钉钉考勤替代传统打卡机，支持车间工人打卡、排班管理、加班统计，与报工系统关联",
         "priority": "should",
-        "confidence": "high",
-        "source": {
-          "type": "customer-stated",
-          "detail": "客户明确提到的适用项目类型",
-          "raw": "适用项目：精准饲喂、精准通风、疫苗方案、饲料实验等养殖类研发项目"
-        },
+        "confidence": "low",
+        "source": { "type": "sales-observation", "detail": "销售指南切入点：'解决谁几点来、加班统计麻烦的实际痛点'", "raw": null },
         "status": "active",
-        "module": "疫苗方案管理",
-        "relatedPainPoints": [],
+        "module": "协同办公",
+        "relatedPainPoints": ["人事统计效率低"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -171,18 +119,14 @@
       {
         "id": "REQ-006",
         "category": "functional",
-        "title": "饲料实验研发项目管理",
-        "description": "支持饲料配方实验、营养效果对比项目管理，包括实验组/对照组设计、饲料消耗记录、生长性能数据采集、营养成本分析、效果对比报告",
+        "title": "移动端审批流",
+        "description": "建立采购、报销、请假等常用审批流程，支持手机端操作，替代纸质签字",
         "priority": "should",
-        "confidence": "high",
-        "source": {
-          "type": "customer-stated",
-          "detail": "客户明确提到的适用项目类型",
-          "raw": "适用项目：精准饲喂、精准通风、疫苗方案、饲料实验等养殖类研发项目"
-        },
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案决策链'决策依赖口头沟通'推断需要流程数字化", "raw": null },
         "status": "active",
-        "module": "饲料实验管理",
-        "relatedPainPoints": ["质量管理/溯源-饲料溯源困难"],
+        "module": "协同办公",
+        "relatedPainPoints": ["决策效率低"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -190,18 +134,14 @@
       {
         "id": "REQ-007",
         "category": "functional",
-        "title": "多角色权限管理",
-        "description": "支持研发人员、实验室管理员、生产部领导、财务人员等不同角色的差异化功能权限和数据权限配置，确保数据隔离与操作合规",
-        "priority": "should",
-        "confidence": "medium",
-        "source": {
-          "type": "customer-stated",
-          "detail": "演示预约用途包含权限协同打通",
-          "raw": "演示预约用途：功能讲解+场景适配+落地方案+权限&费用协同打通"
-        },
+        "title": "生产可视化看板",
+        "description": "车间级生产看板实时展示订单进度、设备状态、良率等关键指标，支持管理决策",
+        "priority": "could",
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案痛点'订单进度对客户不透明'推断需要可视化呈现", "raw": null },
         "status": "active",
-        "module": "权限管理",
-        "relatedPainPoints": [],
+        "module": "生产管理",
+        "relatedPainPoints": ["生产管理-进度不透明"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
@@ -209,112 +149,28 @@
       {
         "id": "REQ-008",
         "category": "functional",
-        "title": "研发费用与成本管理",
-        "description": "支持研发项目预算编制、费用报销、成本实时跟踪、预算执行分析，与财务系统协同打通",
-        "priority": "should",
-        "confidence": "medium",
-        "source": {
-          "type": "customer-stated",
-          "detail": "演示预约用途包含费用协同打通",
-          "raw": "演示预约用途：功能讲解+场景适配+落地方案+权限&费用协同打通"
-        },
+        "title": "设备点检与OEE统计",
+        "description": "建立设备点检标准记录，采集OEE数据，支撑产能利用率分析与设备维护计划",
+        "priority": "could",
+        "confidence": "low",
+        "source": { "type": "profile-inference", "detail": "档案痛点'设备故障突发性维护，OEE数据缺失'推断", "raw": null },
         "status": "active",
-        "module": "费用管理",
-        "relatedPainPoints": ["成本核算-分摊不精准"],
+        "module": "设备管理",
+        "relatedPainPoints": ["设备管理-OEE黑箱"],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
         "history": []
       },
       {
         "id": "REQ-009",
-        "category": "functional",
-        "title": "实验数据标准化采集",
-        "description": "支持从各类传感器、设备、手工记录等多源数据接入，建立养殖实验数据标准化模型，实现数据自动采集、清洗、存储",
-        "priority": "should",
-        "confidence": "medium",
-        "source": {
-          "type": "profile-inference",
-          "detail": "根据implicitNeeds推断：养殖实验数据标准化采集是研发项目管理的底层支撑需求",
-          "raw": null
-        },
-        "status": "active",
-        "module": "数据采集",
-        "relatedPainPoints": ["生产管理-依赖人工记录"],
-        "firstVersion": "v0.1",
-        "lastUpdated": "v0.1",
-        "history": []
-      },
-      {
-        "id": "REQ-010",
-        "category": "functional",
-        "title": "多养殖场数据汇总分析",
-        "description": "支持跨多个养殖场的项目数据统一汇总、对比分析、汇总报表生成，支撑集团级决策",
-        "priority": "should",
-        "confidence": "medium",
-        "source": {
-          "type": "profile-inference",
-          "detail": "根据implicitNeeds推断：客户有多养殖场布局，需要跨场数据汇总",
-          "raw": null
-        },
-        "status": "active",
-        "module": "数据分析",
-        "relatedPainPoints": ["生产管理-存栏变化不透明"],
-        "firstVersion": "v0.1",
-        "lastUpdated": "v0.1",
-        "history": []
-      },
-      {
-        "id": "REQ-011",
         "category": "integration",
-        "title": "与现有ERP/财务系统集成",
-        "description": "支持与客户现有ERP系统（如用友、金蝶等）或财务系统对接，实现项目数据与财务数据的互通",
+        "title": "与主机厂DMS系统对接",
+        "description": "实现与主机厂DMS系统对接，订单自动拉取、发货指令直达，降低沟通成本并提升合规评分",
         "priority": "could",
         "confidence": "low",
-        "source": {
-          "type": "profile-inference",
-          "detail": "根据客户规模推断中型企业通常已有ERP系统，需要集成避免数据孤岛",
-          "raw": null
-        },
+        "source": { "type": "profile-inference", "detail": "档案机会'与主机厂DMS系统对接'推断", "raw": null },
         "status": "active",
         "module": "系统集成",
-        "relatedPainPoints": [],
-        "firstVersion": "v0.1",
-        "lastUpdated": "v0.1",
-        "history": []
-      },
-      {
-        "id": "REQ-012",
-        "category": "functional",
-        "title": "移动端数据采集支持",
-        "description": "支持移动端（手机/PDA）进行现场数据录入、巡检记录、拍照上传、审批操作",
-        "priority": "could",
-        "confidence": "low",
-        "source": {
-          "type": "industry-pattern",
-          "detail": "养殖行业现场操作人员需要在猪舍内进行数据记录，移动端是行业常见需求",
-          "raw": null
-        },
-        "status": "active",
-        "module": "移动端",
-        "relatedPainPoints": ["生产管理-依赖人工记录"],
-        "firstVersion": "v0.1",
-        "lastUpdated": "v0.1",
-        "history": []
-      },
-      {
-        "id": "REQ-013",
-        "category": "functional",
-        "title": "项目资源冲突预警",
-        "description": "当多个项目同时需要相同人员、设备、实验动物等资源时，系统自动预警并提供冲突解决方案",
-        "priority": "could",
-        "confidence": "low",
-        "source": {
-          "type": "profile-inference",
-          "detail": "集团级项目集管控场景下，资源协调是核心痛点",
-          "raw": null
-        },
-        "status": "active",
-        "module": "项目集管理",
         "relatedPainPoints": [],
         "firstVersion": "v0.1",
         "lastUpdated": "v0.1",
@@ -323,234 +179,219 @@
     ],
     "users": [
       {
-        "role": "集团研发管理层",
-        "description": "负责集团整体研发战略规划、项目集整体把控、资源调配决策",
-        "mainTasks": ["查看项目组合全景视图", "审批重大立项", "分析跨项目绩效", "资源冲突协调"]
+        "role": "老板/老板娘",
+        "description": "企业实际控制人，负责信息化投入最终决策",
+        "mainTasks": ["审批信息化采购", "查看经营数据（成本、利润）", "协调跨部门资源"]
       },
       {
-        "role": "研发项目负责人",
-        "description": "负责单个研发项目的全流程管理，包括方案设计、执行监控、成果汇报",
-        "mainTasks": ["项目立项与计划编制", "任务分配与跟踪", "实验数据审核", "项目报告编制"]
+        "role": "生产厂长",
+        "description": "负责车间生产管理，约1人",
+        "mainTasks": ["排产计划制定", "生产进度跟踪", "车间人员调度", "质量问题处理"]
       },
       {
-        "role": "实验室管理员",
-        "description": "负责实验室日常运营、仪器设备管理、实验数据采集规范管理",
-        "mainTasks": ["实验设备管理", "数据采集标准维护", "实验记录审核", "试剂耗材管理"]
+        "role": "车间班组长",
+        "description": "负责一线生产执行，每班1-2人",
+        "mainTasks": ["接收派工任务", "报工数据录入", "现场质量初检", "设备点检记录"]
       },
       {
-        "role": "养殖场技术人员",
-        "description": "在现场执行数据采集、巡检记录、设备操作等任务",
-        "mainTasks": ["现场数据采集录入", "日常巡检记录", "异常情况上报", "设备操作执行"]
+        "role": "质检主管",
+        "description": "负责来料/过程/出货质检，约1-2人",
+        "mainTasks": ["来料检验记录", "过程质量控制", "出货检验放行", "质量追溯数据维护"]
       },
       {
-        "role": "生产部领导",
-        "description": "关注研发项目对生产业务的影响，审核实验方案与生产计划的协调",
-        "mainTasks": ["项目与生产协同审批", "实验结果生产转化评估", "资源需求确认"]
+        "role": "仓库管理员",
+        "description": "负责原材料/成品出入库管理，约1-2人",
+        "mainTasks": ["扫码入库/出库", "库存数据维护", "盘点配合", "呆滞料识别上报"]
       },
       {
-        "role": "财务/采购人员",
-        "description": "负责研发项目预算执行、费用报销、采购协同",
-        "mainTasks": ["预算编制与审批", "费用报销处理", "项目采购协同", "成本分析"]
+        "role": "人事/行政",
+        "description": "负责考勤统计、员工管理等，约1人",
+        "mainTasks": ["考勤打卡管理", "排班配置", "加班统计", "人事档案维护"]
       }
     ],
     "scope": {
       "inScope": [
-        "集团级项目集管理（多项目汇总视图、资源协调、进度跟踪）",
-        "单项目全生命周期管理（立项→计划→执行→监控→结项）",
-        "四类研发实验管理（精准饲喂、精准通风、疫苗方案、饲料实验）",
-        "多角色权限管理",
-        "研发费用与成本管理",
-        "实验数据采集与存储",
-        "跨养殖场数据汇总分析"
+        "钉钉考勤与排班管理",
+        "扫码报工与工序追踪",
+        "库存扫码出入库管理",
+        "移动端审批流",
+        "订单级成本核算",
+        "条码追溯（来料-工序-出货）",
+        "生产看板与进度可视化"
       ],
       "outOfScope": [
-        "饲料生产加工管理",
-        "商品猪养殖批次管理",
-        "猪群全生命周期追溯",
-        "供应链采购管理",
-        "设备自动化控制"
+        "财务总账系统",
+        "复杂APS高级排程",
+        "CAD/CAM设计集成",
+        "设备PLC自动化控制",
+        "跨境电商/出口管理"
       ],
       "futureScope": [
-        "与物联网传感器深度集成",
-        "AI辅助实验方案优化",
-        "移动端APP开发",
-        "与现有ERP系统集成"
+        "与主机厂DMS系统对接",
+        "设备OEE监控与预测性维护",
+        "BI经营分析报表",
+        "供应商协同门户"
       ],
       "phases": [
         {
-          "phase": "P1-核心管理",
-          "description": "项目集视图、单项目管理、基础数据采集",
+          "phase": "P1-考勤协同切入",
+          "description": "钉钉考勤打卡、排班管理、加班统计，与钉钉审批流打通",
+          "estimatedDuration": "1-2个月"
+        },
+        {
+          "phase": "P2-生产执行管理",
+          "description": "扫码报工、工序追踪、库存扫码出入库、生产看板",
           "estimatedDuration": "2-3个月"
         },
         {
-          "phase": "P2-专项实验",
-          "description": "四类实验模板、数据分析报表",
-          "estimatedDuration": "2个月"
-        },
-        {
-          "phase": "P3-协同扩展",
-          "description": "权限体系完善、费用管理、跨系统集成",
+          "phase": "P3-成本与质量深化",
+          "description": "订单成本核算、工废料废统计、全链路质量追溯",
           "estimatedDuration": "2-3个月"
         }
       ],
       "priorityMatrix": [
         {
           "dimension": "业务价值",
-          "high": ["集团级项目集管控", "单项目全流程落地"],
-          "medium": ["精准饲喂研发项目管理", "精准通风研发项目管理"],
-          "low": ["移动端数据采集支持"]
+          "high": ["产品成本精细化核算", "工序级报工与进度追踪"],
+          "medium": ["全链路质量追溯", "库存账实一体化"],
+          "low": ["生产可视化看板", "设备点检与OEE统计"]
         },
         {
           "dimension": "实施复杂度",
-          "high": ["与现有ERP/财务系统集成", "多养殖场数据汇总分析"],
-          "medium": ["多角色权限管理", "实验数据标准化采集"],
-          "low": ["单项目全流程落地", "精准饲喂研发项目管理"]
+          "high": ["全链路质量追溯", "与主机厂DMS对接"],
+          "medium": ["工序级报工与进度追踪", "产品成本精细化核算"],
+          "low": ["考勤与工时管理", "移动端审批流"]
         }
       ]
     },
     "constraints": {
       "budget": {
-        "total": "未知",
-        "flexibility": "待确认"
+        "total": "",
+        "flexibility": "未知"
       },
       "timeline": {
-        "expectedStart": "未知",
-        "expectedGoLive": "未知（客户提到6-12个月窗口期）"
+        "expectedStart": "",
+        "expectedGoLive": ""
       }
     },
     "successCriteria": {
       "operational": [
-        "实现N个在研项目的统一在线管理",
-        "项目进度透明化，执行偏差率低于X%",
-        "实验数据采集效率提升X%",
-        "跨项目资源协调时间缩短X%"
+        "考勤统计准确率100%，加班计算自动化",
+        "订单进度实时可见，对客户透明",
+        "扫码报工替代手工记录，数据准确可查"
       ],
       "business": [
-        "研发项目成功率提升",
-        "实验数据可追溯、可复用",
-        "为精准养殖决策提供数据支撑"
+        "产品成本核算到订单级别，支持盈利分析",
+        "库存账实一致率≥95%",
+        "满足主机厂验厂追溯要求"
       ]
     },
     "solutionDirection": {
-      "overallApproach": "基于成熟的研发项目管理平台，针对养殖行业特性进行配置与定制，优先实现项目集管理+单项目全流程+四类实验模板的核心闭环",
-      "recommendedApproach": "平台+行业插件模式",
-      "technicalDirection": "采用微服务架构，支持私有化部署，与客户现有IT基础设施兼容",
-      "implementationStrategy": "分阶段实施：P1聚焦核心管理能力交付 → P2完善专项实验功能 → P3扩展协同与集成",
+      "overallApproach": "轻量化SaaS工具切入，分阶段建设：P1考勤协同建立信任 → P2生产执行打通主流程 → P3成本质量深化",
+      "recommendedApproach": "钉钉生态+轻量化MES组合",
+      "technicalDirection": "基于钉钉平台搭建，集成轻量化报工和追溯工具，私有化部署可选",
+      "implementationStrategy": "分期实施，P1聚焦考勤+审批（1-2个月见效），降低决策风险",
       "nextSteps": [
-        "1. 安排产品演示，重点覆盖项目集视图、单项目管理流程、实验模板",
-        "2. 深入调研客户当前项目管理体系与数据采集现状",
-        "3. 确认关键决策人与预算范围",
-        "4. 制定POC方案与试点项目选择"
+        "1. 安排首次拜访，了解当前考勤方式和车间管理痛点",
+        "2. 确认老板最关心的问题：成本算不清 vs 订单跟踪难 vs 库存乱",
+        "3. 了解车间工人是否配备智能手机",
+        "4. 确认主机厂（东风、宇通）是否有追溯格式要求"
       ]
     },
     "pendingQuestions": [
       {
         "id": "PQ-001",
-        "category": "预算",
+        "category": "业务",
         "priority": "必问",
         "stage": "screening",
-        "question": "贵司对这次研发项目管理平台建设有初步的预算范围吗？或者期望投入多少人/天？",
-        "purpose": "评估项目规模与资源投入，判断解决方案定位",
-        "expectedDirection": "有明确预算范围/无具体预算但有量级预期/预算待批",
-        "targetPerson": "集团决策层/财务负责人",
-        "relatedNeedIds": [],
+        "question": "老板/老板娘最关心的是哪个问题：成本算不清、订单跟踪难、还是库存乱？",
+        "purpose": "确认核心决策者的一号工程，确定主攻方向",
+        "expectedDirection": "明确回答一个核心痛点",
+        "targetPerson": "老板娘",
+        "relatedNeedIds": ["REQ-001", "REQ-002", "REQ-004"],
         "status": "pending",
         "answer": null,
         "resolvedInVersion": null
       },
       {
         "id": "PQ-002",
-        "category": "时间",
+        "category": "技术",
         "priority": "必问",
         "stage": "screening",
-        "question": "您期望系统什么时候能够上线使用？有没有关键的时间节点或业务场景需要配合？",
-        "purpose": "明确项目时间线，评估交付风险",
-        "expectedDirection": "有明确时间要求/希望在某个业务周期前/越快越好",
-        "targetPerson": "集团决策层/研发负责人",
-        "relatedNeedIds": [],
+        "question": "车间工人是否配备智能手机？能否使用钉钉？",
+        "purpose": "确认考勤和报工系统的落地可行性",
+        "expectedDirection": "有智能手机/功能机/无手机",
+        "targetPerson": "人事负责人",
+        "relatedNeedIds": ["REQ-005", "REQ-001"],
         "status": "pending",
         "answer": null,
         "resolvedInVersion": null
       },
       {
         "id": "PQ-003",
-        "category": "决策",
+        "category": "业务",
         "priority": "必问",
-        "stage": "screening",
-        "question": "除了您之外，还有哪些人会参与这个项目的决策或评估？",
-        "purpose": "识别完整决策链，避免遗漏关键干系人",
-        "expectedDirection": "明确列出决策团队成员及角色",
-        "targetPerson": "客户接口人",
-        "relatedNeedIds": [],
+        "stage": "deep-dive",
+        "question": "主机厂（东风、宇通）是否有明确的IT系统对接要求或追溯格式要求？",
+        "purpose": "评估质量追溯系统的紧迫性和具体规格",
+        "expectedDirection": "有/无明确要求，了解具体规格",
+        "targetPerson": "质检主管/生产厂长",
+        "relatedNeedIds": ["REQ-003"],
         "status": "pending",
         "answer": null,
         "resolvedInVersion": null
       },
       {
         "id": "PQ-004",
-        "category": "业务",
+        "category": "预算",
         "priority": "必问",
-        "stage": "deep-dive",
-        "question": "目前研发项目的管理是用什么方式？是在用Excel、PPT，还是有其他系统？有哪些痛点最迫切想解决？",
-        "purpose": "了解当前状态与核心痛点，指导方案聚焦",
-        "expectedDirection": "具体描述当前痛点场景",
-        "targetPerson": "研发项目负责人/实验室管理员",
-        "relatedNeedIds": ["REQ-001", "REQ-002"],
+        "stage": "screening",
+        "question": "对一期上线的预算范围大概是多少？或者期望投入多少人/天？",
+        "purpose": "确认付费意愿和能力，合理规划功能范围",
+        "expectedDirection": "有明确预算/有量级预期/预算待批",
+        "targetPerson": "老板娘",
+        "relatedNeedIds": [],
         "status": "pending",
         "answer": null,
         "resolvedInVersion": null
       },
       {
         "id": "PQ-005",
-        "category": "技术",
-        "priority": "必问",
-        "stage": "deep-dive",
-        "question": "养殖场的数据采集主要靠人工记录还是有设备/传感器接入？数据格式是否已经标准化？",
-        "purpose": "评估数据采集现状与集成复杂度",
-        "expectedDirection": "纯手工/部分自动化/有IoT设备",
-        "targetPerson": "IT负责人/养殖场技术人员",
-        "relatedNeedIds": ["REQ-009", "REQ-012"],
+        "category": "时间",
+        "priority": "选问",
+        "stage": "screening",
+        "question": "期望系统什么时候能够上线使用？有没有关键的时间节点？",
+        "purpose": "明确项目时间线，评估交付节奏",
+        "expectedDirection": "有明确时间要求/越快越好/配合业务周期",
+        "targetPerson": "老板娘",
+        "relatedNeedIds": [],
         "status": "pending",
         "answer": null,
         "resolvedInVersion": null
       },
       {
         "id": "PQ-006",
-        "category": "集成",
+        "category": "技术",
         "priority": "选问",
         "stage": "deep-dive",
-        "question": "公司现在有没有在使用ERP系统、财务系统或其他管理软件？希望新系统与现有系统如何协同？",
-        "purpose": "评估集成需求与方案边界",
-        "expectedDirection": "有明确系统/部分有系统/主要靠手工",
-        "targetPerson": "IT负责人",
-        "relatedNeedIds": ["REQ-011"],
+        "question": "当前使用什么方式进行订单信息传递？微信群、纸质单据还是口头？",
+        "purpose": "了解生产信息流转方式，评估报工系统的接入难度",
+        "expectedDirection": "微信群/纸质/口头/Excel",
+        "targetPerson": "生产厂长",
+        "relatedNeedIds": ["REQ-001"],
         "status": "pending",
         "answer": null,
         "resolvedInVersion": null
       },
       {
         "id": "PQ-007",
-        "category": "业务",
-        "priority": "选问",
-        "stage": "deep-dive",
-        "question": "四类实验（精准饲喂、精准通风、疫苗方案、饲料实验）中，哪个是当前最核心或最急需管理的？",
-        "purpose": "确定试点项目与方案优先级",
-        "expectedDirection": "明确最优先级实验类型",
-        "targetPerson": "研发项目负责人",
-        "relatedNeedIds": ["REQ-003", "REQ-004", "REQ-005", "REQ-006"],
-        "status": "pending",
-        "answer": null,
-        "resolvedInVersion": null
-      },
-      {
-        "id": "PQ-008",
-        "category": "竞对",
+        "category": "决策",
         "priority": "选问",
         "stage": "screening",
-        "question": "除了我们之外，您还在了解其他供应商的方案吗？比较关注哪些方面？",
-        "purpose": "了解竞争态势与客户关注点",
-        "expectedDirection": "有/无竞争对比，明确关注因素",
-        "targetPerson": "客户接口人",
+        "question": "除了老板娘之外，还有哪些人会参与这个项目的评估或决策？",
+        "purpose": "识别完整决策链，避免遗漏关键干系人",
+        "expectedDirection": "列出决策团队成员及角色",
+        "targetPerson": "人事负责人",
         "relatedNeedIds": [],
         "status": "pending",
         "answer": null,
@@ -560,76 +401,52 @@
     "risksAndAssumptions": {
       "risks": [
         {
-          "description": "用户接受度风险：养殖行业人员IT素养参差不齐，一线技术人员可能抵触系统化录入",
+          "description": "需求发散风险：老板娘可能提出大量零散需求，导致项目范围失控",
           "impact": "高",
-          "mitigation": "提供移动端简化操作，设计符合现场习惯的数据采集流程，安排充分培训与试点"
+          "mitigation": "坚持'先考勤、再协同、逐步深入'的切入策略，控制MVP范围，每阶段验收后再推进"
         },
         {
-          "description": "数据标准化风险：各养殖场数据格式不统一，历史数据可能无法直接迁移利用",
+          "description": "内部推动力不足：人事负责人刚入职想建功，但可能缺乏推动跨部门协作的权威",
           "impact": "中",
-          "mitigation": "在项目启动初期进行数据现状调研，制定数据标准化转换方案"
+          "mitigation": "建议绑定老板娘作为项目 sponsor，建立周汇报机制，争取高层背书"
         },
         {
-          "description": "多场协调复杂性：多养殖场地理分散，网络条件不一，增加实施难度",
+          "description": "数据基础薄弱：当前信息化程度低，历史数据缺失，可能影响成本核算精度",
           "impact": "中",
-          "mitigation": "评估各场网络条件，设计离线/在线混合方案，优先覆盖网络条件好的试点场"
-        },
-        {
-          "description": "需求蔓延风险：从项目集管控到单项目全流程，边界不清可能导致需求范围持续扩大",
-          "impact": "中",
-          "mitigation": "明确MVP范围，采用敏捷迭代方式管理需求变更，设置阶段验收点"
-        },
-        {
-          "description": "集成不确定性：与现有ERP/财务系统的集成复杂度在未充分调研前难以准确评估",
-          "impact": "低",
-          "mitigation": "在P3阶段处理集成需求，前期聚焦核心功能，评估后再决定集成深度"
+          "mitigation": "分阶段导入，先抓关键数据，预留数据补录窗口期，与客户约定数据治理节奏"
         }
       ],
       "assumptions": [
-        {
-          "description": "客户具备基本的IT基础设施（网络、服务器/云资源）支撑系统部署",
-          "impact": "中"
-        },
-        {
-          "description": "客户高层支持自上而下推动项目实施，能够协调各部门资源配合",
-          "impact": "高"
-        },
-        {
-          "description": "四类实验模板可抽象为标准化功能模块，无需完全定制开发",
-          "impact": "中"
-        },
-        {
-          "description": "客户愿意进行一定程度的业务流程标准化，以适配系统功能",
-          "impact": "高"
-        }
+        { "description": "老板/老板娘有意愿投入信息化改善管理，愿意分阶段尝试", "impact": "高" },
+        { "description": "车间工人具备使用智能手机扫码的能力和意愿", "impact": "中" },
+        { "description": "主机厂暂无强制的DMS对接时间要求，给了内部管理升级的窗口期", "impact": "中" },
+        { "description": "现有钉钉组织架构和人员信息可导入，无需重新建立", "impact": "低" }
       ],
       "dependencies": [
-        "客户提供各养殖场/实验室的详细业务流程文档",
-        "客户IT团队配合完成系统部署与集成评估",
-        "客户确定试点项目与关键用户参与POC"
+        "客户提供清晰的组织架构和人员清单",
+        "客户确认车间网络覆盖情况（WiFi/4G）",
+        "客户确定试点产线或车间范围"
       ]
     },
     "completionRate": {
-      "overall": 45,
+      "overall": 25,
       "byCategory": {
-        "业务需求": 80,
-        "功能需求": 60,
+        "业务需求": 40,
+        "功能需求": 30,
         "技术需求": 20,
-        "数据需求": 30,
-        "集成需求": 20,
-        "安全需求": 0,
+        "数据需求": 20,
+        "集成需求": 10,
+        "安全需求": 10,
         "非功能性需求": 20,
         "预算": 0,
         "时间": 10,
-        "决策链": 30,
+        "决策链": 40,
         "成功标准": 30
       },
       "blockers": [
         "预算范围未知，无法评估方案规模",
-        "上线时间未确认，可能影响交付节奏",
-        "完整决策链未识别，可能遗漏关键干系人",
-        "当前数据采集现状未调研，影响方案设计",
-        "现有IT系统情况未知，集成方案待定"
+        "上线时间未确认",
+        "核心痛点优先级未当面确认"
       ]
     }
   }
